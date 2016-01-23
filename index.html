@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>台灣風景分頁(Taiwan New Tab)</title>
+    <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+    <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./scripts/background.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" id="wrapper">
+    	<div class="loading-block" id="loading-block">
+    		<img src="./images/ajax-loader.gif">
+    	</div>
+        <div class="navbar">
+            <div>
+                <button class="navbtn" id="navbtn"><i class="glyphicon glyphicon-search"></i></button>
+				<form class="search-bar" id="search-bar" method="get" action="http://www.google.com/search" target="_blank" id="search-bar">
+                    <div class="input-block" id="input-block">
+                        <input class="search-input" type="text" name="q" placeholder="請輸入 Google 搜尋關鍵字並按 Enter">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="meta">
+            <div>
+                <a id="img-link" target="_blank" data-toggle="tooltip" data-placement="top">
+                    <p class="image-name" id="img-name"></p>
+                </a>
+            </div>
+        </div>
+        <div class="clock-font-block">
+            <p class="clock-font" id="clock-font"></p>
+        </div>
+    </div>
+</body>
+</html>
