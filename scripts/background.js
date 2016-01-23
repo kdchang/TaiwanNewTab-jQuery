@@ -19,6 +19,7 @@ $(document).ready(function() {
                 var showImgName = '';
                 var showImgAuthor = '';
 
+                // iterate object
                 for (var key in response) {
                     imgSource.push(response[key].path);
                     imgLink.push(response[key].link);
@@ -26,6 +27,7 @@ $(document).ready(function() {
                     imgAuthor.push(response[key].authorName);
                 }
 
+                // Math random; 值範圍：0 ~ 0.9999999(無窮小數)
                 rand = Math.floor(Math.floor(Math.random() * imgSource.length));
 
                 showImgSource = imgSource[rand];
@@ -44,6 +46,7 @@ $(document).ready(function() {
 
             }
         }).done(function() {
+            // hide the loading bar as loading over
             $('#loading-block').hide();
         });
     }
@@ -62,16 +65,17 @@ $(document).ready(function() {
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
         var ampm = hours >= 12 ? 'PM' : 'AM';
+        var strTime = '';
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
-        var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
         return strTime;
     }
 
     // toogle search bar
-    $('#navbtn').click(function() {
+    $('#navbtn').on('click', function() {
         $('#input-block').toggle();
     });
 
