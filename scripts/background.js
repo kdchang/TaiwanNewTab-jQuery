@@ -37,7 +37,7 @@ $(document).ready(function() {
                     $('body').css('background-image', showImgSource);
                     $('#img-name').html(showImgName);
                     $('#img-link').attr('href', showImgLink);
-                    $('#img-link').attr('title', showImgAuthor);
+                    $('#img-link').attr('title', 'photo via ' + showImgAuthor);
                 }
             },
             error: function(e) {
