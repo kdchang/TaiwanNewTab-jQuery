@@ -27,6 +27,18 @@ $(document).ready(function() {
                     imgAuthor.push(response[key].authorName);
                 }
 
+                /* data
+                    {
+                        "name": "合歡山",
+                        "link": "https://www.flickr.com/photos/113058966@N08/15519708686/in/photolist-pDqyGf…4UcD-BSFtha-CnWHuw-BSybwS-CML4A7-BSFpN6-BSFnUr-CEvWVE-BSFjmp-Cgyx9k-CEvPuh",
+                        "path": "url(../images/photos/hehuanshan.jpg)",
+                        "authorName": "gamemall104"
+                    }
+
+                    reponse[rand].path;
+                    reponse[rand].link;
+                */                
+
                 // Math random; 值範圍：0 ~ 0.9999999(無窮小數)
                 rand = Math.floor(Math.floor(Math.random() * imgSource.length));
 
