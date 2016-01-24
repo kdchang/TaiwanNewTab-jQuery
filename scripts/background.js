@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // loading photos
     function loadPhoto() {
         //var url = 'https://raw.githubusercontent.com/kdchang/TaiwanNewTab/master/photos.json';
         var url = '../photos.json';
@@ -9,49 +10,17 @@ $(document).ready(function() {
             dataType: 'json',
             url: url,
             success: function(response) {
-                var imgSource = [];
-                var imgLink = [];
-                var imgName = [];
-                var imgAuthor = [];
                 var rand = 0;
-                var showImgSource = '';
-                var showImgLink = '';
-                var showImgName = '';
-                var showImgAuthor = '';
-
-                // iterate object
-                for (var key in response) {
-                    imgSource.push(response[key].path);
-                    imgLink.push(response[key].link);
-                    imgName.push(response[key].name);
-                    imgAuthor.push(response[key].authorName);
-                }
-
-                /* data
-                    {
-                        "name": "合歡山",
-                        "link": "https://www.flickr.com/photos/113058966@N08/15519708686/in/photolist-pDqyGf…4UcD-BSFtha-CnWHuw-BSybwS-CML4A7-BSFpN6-BSFnUr-CEvWVE-BSFjmp-Cgyx9k-CEvPuh",
-                        "path": "url(../images/photos/hehuanshan.jpg)",
-                        "authorName": "gamemall104"
-                    }
-
-                    reponse[rand].path;
-                    reponse[rand].link;
-                */                
-
                 // Math random; 值範圍：0 ~ 0.9999999(無窮小數)
-                rand = Math.floor(Math.floor(Math.random() * imgSource.length));
+                rand = Math.floor(Math.floor(Math.random() * response.length));
 
-                showImgSource = imgSource[rand];
-                showImgLink = imgLink[rand];
-                showImgName = imgName[rand];
-                showImgAuthor = imgAuthor[rand];
-
-                if (imgSource.length !== 0) {
-                    $('body').css('background-image', showImgSource);
-                    $('#img-name').html(showImgName);
-                    $('#img-link').attr('href', showImgLink);
-                    $('#img-link').attr('title', 'photo via ' + showImgAuthor);
+                // 判斷資料長度非0
+                if (response.length !== 0) {
+                    // 動態插入背景圖和文字
+                    $('body').css('background-image', response[rand].path);
+                    $('#img-name').html(response[rand].name);
+                    $('#img-link').attr('href', response[rand].link);
+                    $('#img-link').attr('title', 'photo via ' + response[rand].authorName);
                 }
             },
             error: function(e) {
@@ -86,12 +55,15 @@ $(document).ready(function() {
         return strTime;
     }
 
-    // toogle search bar
-    $('#navbtn').on('click', function() {
-        $('#input-block').toggle();
-    });
+    function initToogleBar() {
+        // toogle search bar
+        $('#navbtn').on('click', function() {
+            $('#input-block').toggle();
+        });
+    }
 
     // call function 
     loadPhoto();
     initializeClock();
+    initToogleBar();
 });
